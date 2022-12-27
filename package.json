@@ -1,0 +1,20 @@
+{
+  "name": "word-flow",
+  "version": "1.0.0",
+  "description": "word flow is a new way to learn new words",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Nikita Emelianov[nikita.emelian@gmail.com]",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikita-emelianov/word-flow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nikita-emelianov/word-flow/issues"
+  },
+  "homepage": "https://github.com/nikita-emelianov/word-flow#readme"
+}
