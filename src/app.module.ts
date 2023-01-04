@@ -1,10 +1,22 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Word } from './words/entities/word';
+import { WordsModule } from './words/words.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'rootpass',
+      database: 'word_flow',
+      entities: [Word],
+      synchronize: true,
+    }),
+    WordsModule,
+  ],
 })
-export class AppModule {}
+export class AppModule {
+}
