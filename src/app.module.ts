@@ -7,7 +7,7 @@ import { WordsModule } from './words/words.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'host.docker.internal',
       port: 3306,
       username: 'root',
       password: 'rootpass',
