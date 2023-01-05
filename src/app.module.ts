@@ -7,6 +7,9 @@ import { WordsModule } from './words/words.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
+      // to run locally
+      // host: 'localhost',
+      // to run with docker
       host: 'host.docker.internal',
       port: 3306,
       username: 'root',
