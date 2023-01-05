@@ -18,5 +18,4 @@ import { WordsModule } from './words/words.module';
     WordsModule,
   ],
 })
-export class AppModule {
-}
+export class AppModule {}

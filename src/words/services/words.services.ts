@@ -12,13 +12,11 @@ export class WordsService {
   ) {}
 
   async getWords(): Promise<WordDto[]> {
-    return this.wordsRepository
-      .find()
-      .then(words =>
-        words.map(w => ({
-          name: w.name,
-          meaning: w.meaning,
-        })),
-      );
+    return this.wordsRepository.find().then((words) =>
+      words.map((w) => ({
+        name: w.name,
+        meaning: w.meaning,
+      })),
+    );
   }
 }
