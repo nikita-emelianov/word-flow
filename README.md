@@ -2,9 +2,14 @@
 Word Flow is a tool to learn new words on daily basis.
 
 # MVP Plan
-1. Ability to add word with the meaning
-2. Ability to retrieve word list
-3. Ability to get random word with the meaning from the list
+Tech:
+1. docker-compose.yml to run everything with a single setup
+2. deploy & run on lightsail
+3. telegram bot
+
+Features:
+1. Add word with the meaning
+2. Get word list
 
 # Setup & run mysql and phpmyadmin with Docker
 1. Install docker
