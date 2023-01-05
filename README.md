@@ -56,7 +56,7 @@ docker run --name phpmyadmin -d --link mysql:db -p 8080:80 phpmyadmin:latest
 docker ps
 
 # check mysql
-docker exec -it my-own-mysql bash
+docker exec -it mysql bash
 mysql --user=root --password=rootpass
 ```
 ### Backend
