@@ -7,4 +7,4 @@ rm -rf word-flow
 git clone https://github.com/nikita-emelianov/word-flow.git
 
 # run
-docker compose -f ./word-flow/docker-compose.yml up -d
+docker compose -f ./word-flow/docker-compose.yml up -d --build
