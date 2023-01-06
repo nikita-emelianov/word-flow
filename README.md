@@ -2,8 +2,7 @@
 Word Flow is a tool to learn new words on daily basis.
 
 **MVP Tech:**
-1. deploy & run on lightsail
-2. telegram bot
+1. Telegram bot
 
 **MVP Features:**
 1. Add word with the meaning
@@ -70,6 +69,14 @@ docker build -t word-flow .
 docker run -p 80:3000 word-flow
 ```
 3. Open http://localhost
+
+## Deployment
+- Install docker on the server.
+- Use script from scripts/deploy.sh to run deployment.
+- open ports to the internet: 
+  - 80 port for backend access.
+  - 8080 port for phpmyadmin access.
+  - 3306 port for direct mysql engine access if you want to manage mysql from external.
 
 ## Test
 ```bash
