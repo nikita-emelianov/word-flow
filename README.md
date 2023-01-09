@@ -1,12 +1,15 @@
 # Word Flow
 Word Flow is a tool to learn new words on daily basis.
 
-**MVP Tech:**
-1. Telegram bot
+#### MVP Tech
+* Telegram bot
 
-**MVP Features:**
-1. Add word with the meaning
-2. Get word list
+#### MVP Features
+* Add word with the meaning
+* Get word list
+
+#### TODOs
+* configure .env variables
 
 ## Fast start
 ```bash
