@@ -22,7 +22,7 @@ services:
     build: ./backend
     image: node:19.3.0
     container_name: backend
-    working_dir: /usr/src/app
+    working_dir: /usr/src/backend
     restart: always
     links:
       - db:mysql
@@ -30,6 +30,18 @@ services:
       - db
     ports:
       - 80:3000
+    extra_hosts:
+      # using Docker Compose + Linux, have to add extra_hosts on docker-compose.yaml file (at least for now)
+      # https://stackoverflow.com/questions/48546124/what-is-linux-equivalent-of-host-docker-internal/67158212#67158212
+      # https://github.com/docker/for-linux/issues/264#issuecomment-784985736
+      - "host.docker.internal:host-gateway"
+
+  bot:
+    build: ./bot
+    image: node:19.3.0
+    container_name: bot
+    working_dir: /usr/src/bot
+    restart: always
     extra_hosts:
       # using Docker Compose + Linux, have to add extra_hosts on docker-compose.yaml file (at least for now)
       # https://stackoverflow.com/questions/48546124/what-is-linux-equivalent-of-host-docker-internal/67158212#67158212

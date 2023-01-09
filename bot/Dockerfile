@@ -1,7 +1,7 @@
 FROM node:19.3.0
 
 # Create app directory
-WORKDIR /usr/src/backend
+WORKDIR /usr/src/bot
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
