@@ -1,0 +1,24 @@
+{
+  "name": "word-flow-bot",
+  "version": "1.0.0",
+  "description": "Word Flow bot",
+  "author": "Nikita Emelianov[nikita.emelian@gmail.com]",
+  "license": "MIT",
+  "main": "dist/main.js",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikita-emelianov/word-flow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nikita-emelianov/word-flow/issues"
+  },
+  "homepage": "https://github.com/nikita-emelianov/word-flow#readme",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "telegraf": "^4.11.2",
+    "typescript": "^4.9.4"
+  }
+}
