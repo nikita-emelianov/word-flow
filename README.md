@@ -18,25 +18,6 @@ docker compose up -d
 docker compose up -d [SERVICE...]
 ```
 
-## Local development
-1. Install packages
-```bash
-$ npm install
-```
-2. Change `host` in `app.module.ts` to `localhost`
-3. Run with
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-4. Open http://localhost:3000
-
 ## Without docker compose
 ### Docker mysql and phpmyadmin
 1. Install docker
@@ -62,7 +43,7 @@ mysql --user=root --password=rootpass
 1. Build image
 ```bash
 # docker run
-docker build -t word-flow .
+docker build -t word-flow ./backend
 ```
 2. Run container
 ```bash
@@ -77,18 +58,6 @@ docker run -p 80:3000 word-flow
   - 80 port for backend access.
   - 8080 port for phpmyadmin access.
   - 3306 port for direct mysql engine access if you want to manage mysql from external.
-
-## Test
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
 
 ## Support & License
 Word Flow is an [MIT licensed](LICENSE) open source project.
