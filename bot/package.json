@@ -15,6 +15,7 @@
   },
   "homepage": "https://github.com/nikita-emelianov/word-flow#readme",
   "scripts": {
+    "build": "tsc",
     "start": "node ."
   },
   "dependencies": {

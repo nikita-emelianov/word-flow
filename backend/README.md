@@ -6,30 +6,30 @@ Use [Word Flow manual](https://github.com/nikita-emelianov/word-flow#readme) for
 ## Local development
 1. Install packages
 ```bash
-$ npm install
+npm install
 ```
 2. Change `host` in `app.module.ts` to `localhost`
 3. Run with
 ```bash
 # development
-$ npm run start
+npm run start
 
 # watch mode
-$ npm run start:dev
+npm run start:dev
 
 # production mode
-$ npm run start:prod
+npm run start:prod
 ```
 4. Open http://localhost:3000
 
 ## Test
 ```bash
 # unit tests
-$ npm run test
+npm run test
 
 # e2e tests
-$ npm run test:e2e
+npm run test:e2e
 
 # test coverage
-$ npm run test:cov
+npm run test:cov
 ```

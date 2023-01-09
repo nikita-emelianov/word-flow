@@ -6,11 +6,15 @@ Use [Word Flow manual](https://github.com/nikita-emelianov/word-flow#readme) for
 ## Local development
 1. Install packages
 ```bash
-$ npm install
+npm install
 ```
 2. Set bot `token` to `new Telegraf(...)` in `main.ts`.
-3. Run with
+3. Build and run with
 ```bash
-$ npm run start
+# build
+npm run build
+
+# start
+npm run start
 ```
 4. Use bot
