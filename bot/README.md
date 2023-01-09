@@ -8,7 +8,7 @@ Use [Word Flow manual](https://github.com/nikita-emelianov/word-flow#readme) for
 ```bash
 npm install
 ```
-2. Set bot `token` to `new Telegraf(...)` in `main.ts`.
+2. Setup .env variables in '.env' (see [.env.defaults](.env.defaults))
 3. Build and run with
 ```bash
 # build
