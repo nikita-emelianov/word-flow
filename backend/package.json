@@ -1,10 +1,10 @@
 {
-  "name": "word-flow",
-  "version": "0.0.1",
-  "description": "Word flow is a new way to learn new words",
+  "name": "word-flow-backend",
+  "version": "1.0.0",
+  "description": "Word Flow backend",
   "author": "Nikita Emelianov[nikita.emelian@gmail.com]",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/main.js",
   "keywords": [],
   "repository": {
     "type": "git",
@@ -13,14 +13,14 @@
   "bugs": {
     "url": "https://github.com/nikita-emelianov/word-flow/issues"
   },
-  "homepage": "https://github.com/nikita-emelianov/word-flow#readme",
+  "homepage": "https://github.com/nikita-emelianov/word-flow/backend#readme",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write src/**/*.ts test/**/*.ts",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "node .",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
