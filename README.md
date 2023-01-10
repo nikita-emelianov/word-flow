@@ -1,9 +1,6 @@
 # Word Flow
 Word Flow is a tool to learn new words on daily basis.
 
-#### MVP Tech
-* Telegram bot
-
 #### MVP Features
 * Add word with the meaning
 * Get word list
@@ -11,7 +8,11 @@ Word Flow is a tool to learn new words on daily basis.
 #### TODOs
 * configure .env variables
 
-## Fast start
+## HOWTO start
+1. Set up your bot with @BotFather on Telegram
+2. Install Docker
+3. Create .env file with environment variables from [.env.defaults](bot/.env.defaults) for the bot
+4. Run
 ```bash
 # build and run all services
 # add --build for rebuild 

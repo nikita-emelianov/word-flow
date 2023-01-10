@@ -1,14 +1,14 @@
 # Word Flow backend
 
-## Fast start
-Use [Word Flow manual](https://github.com/nikita-emelianov/word-flow#readme) for a fast start
+## HOWTO start
+Use [Word Flow manual](../README.md) for a fast start
 
 ## Local development
 1. Install packages
 ```bash
 npm install
 ```
-2. Change `host` in `app.module.ts` to `localhost`
+2. Change `host` in [app.module.ts](src/app.module.ts) to `localhost`
 3. Run with
 ```bash
 # development
