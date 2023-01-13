@@ -7,7 +7,7 @@ Word Flow is a tool to learn new words on daily basis.
 
 #### TODOs
 * configure .env variables
-* fix bot docker local development, mount volume local to docker container so it 
+* mount volume local to docker container so it 
   would be easy to build and test changes of the fly
 
 ## HOWTO start
