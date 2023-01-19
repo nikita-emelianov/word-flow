@@ -4,23 +4,21 @@ import { EchoModule } from './echo/echo.module';
 import { GreeterModule } from './greeter/greeter.module';
 import { sessionMiddleware } from './middleware/session.middleware';
 import { GreeterBotName } from './app.constants';
+import { WordsModule } from './words/words.module';
 
 @Module({
   imports: [
-    // TelegrafModule.forRoot({
-    //   token: process.env.BOT_TOKEN,
-    //   include: [EchoModule],
-    // }),
     TelegrafModule.forRootAsync({
       botName: GreeterBotName,
       useFactory: () => ({
         token: process.env.BOT_TOKEN,
         middlewares: [sessionMiddleware],
-        include: [GreeterModule, EchoModule],
+        include: [GreeterModule, EchoModule, WordsModule],
       }),
     }),
     EchoModule,
     GreeterModule,
+    WordsModule,
   ],
 })
 export class AppModule {}
