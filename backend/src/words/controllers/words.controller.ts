@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
+import { Observable } from 'rxjs';
 import { WordDto } from '../models/word';
 import { WordsService } from '../services/words.services';
 
@@ -7,7 +8,7 @@ export class WordsController {
   constructor(private readonly wordsService: WordsService) {}
 
   @Get()
-  async getWords(): Promise<WordDto[]> {
+  getWords(): Observable<WordDto[]> {
     return this.wordsService.getWords();
   }
 }

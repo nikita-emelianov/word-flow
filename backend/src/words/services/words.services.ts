@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { from, map, Observable } from 'rxjs';
 import { Repository } from 'typeorm';
 import { Word } from '../entities/word';
 import { WordDto } from '../models/word';
@@ -11,12 +12,14 @@ export class WordsService {
     private wordsRepository: Repository<Word>,
   ) {}
 
-  async getWords(): Promise<WordDto[]> {
-    return this.wordsRepository.find().then((words) =>
-      words.map((w) => ({
-        name: w.name,
-        meaning: w.meaning,
-      })),
+  getWords(): Observable<WordDto[]> {
+    return from(this.wordsRepository.find()).pipe(
+      map((words) =>
+        words.map((w) => ({
+          name: w.name,
+          meaning: w.meaning,
+        })),
+      ),
     );
   }
 }
