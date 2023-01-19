@@ -3,7 +3,6 @@ Word Flow is a tool to learn new words on daily basis.
 
 #### MVP Features
 * Add word with the meaning
-* Get word list
 
 #### TODOs
 * configure .env variables
