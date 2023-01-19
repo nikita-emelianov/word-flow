@@ -1,10 +1,9 @@
 # Word Flow
 Word Flow is a tool to learn new words on daily basis.
 
-#### MVP Features
-* Add word with the meaning
-
 #### TODOs
+* use buttons instead of commands
+* add help and start commands (buttons?)
 * configure .env variables
 * mount volume local to docker container so it 
   would be easy to build and test changes of the fly
