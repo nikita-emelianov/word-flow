@@ -17,6 +17,6 @@ export class WordsService {
   addWord(word: WordDto): Observable<void> {
     return this.httpService
       .post<void>(this.baseUrl, word)
-      .pipe(map((result) => result?.data));
+      .pipe(map(() => undefined));
   }
 }

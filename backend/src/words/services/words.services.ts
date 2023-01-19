@@ -22,4 +22,13 @@ export class WordsService {
       ),
     );
   }
+
+  addWord(word: WordDto): Observable<void> {
+    return from(
+      this.wordsRepository.insert({
+        name: word.name,
+        meaning: word.meaning,
+      }),
+    ).pipe(map(() => undefined));
+  }
 }

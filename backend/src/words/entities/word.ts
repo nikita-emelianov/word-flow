@@ -11,6 +11,6 @@ export class Word {
   @Column()
   meaning: string;
 
-  @Column()
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: number;
 }

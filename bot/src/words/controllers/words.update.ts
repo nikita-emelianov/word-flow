@@ -1,6 +1,5 @@
-import { Command, Update } from 'nestjs-telegraf';
+import { Command, Message, Update } from 'nestjs-telegraf';
 import { map, Observable } from 'rxjs';
-import { WordDto } from '../models/word';
 import { WordsService } from '../services/words.service';
 
 @Update()
@@ -18,7 +17,9 @@ export class WordsUpdate {
       );
   }
 
-  addWord(word: WordDto): Observable<void> {
-    return this.wordsService.addWord(word);
+  @Command('addWord')
+  addWord(@Message('text') text: string): Observable<void> {
+    const parts = text.split(' ');
+    return this.wordsService.addWord({ name: parts[1], meaning: parts[2] });
   }
 }
