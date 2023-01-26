@@ -1,6 +1,5 @@
 import { UseFilters, UseGuards, UseInterceptors } from '@nestjs/common';
 import {
-  Help,
   InjectBot,
   On,
   Message,
@@ -31,11 +30,6 @@ export class EchoUpdate {
   async onStart(): Promise<string> {
     const me = await this.bot.telegram.getMe();
     return `Hey, I'm ${me.first_name}`;
-  }
-
-  @Help()
-  async onHelp(): Promise<string> {
-    return 'Send me any text';
   }
 
   @Command('admin')

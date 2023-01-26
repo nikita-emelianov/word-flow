@@ -1,11 +1,23 @@
-import { Command, Message, Update } from 'nestjs-telegraf';
+import { Action, Command, Ctx, Help, Message, Update } from 'nestjs-telegraf';
 import { map, Observable } from 'rxjs';
+import { Context } from 'telegraf';
+import { InlineKeyboardMarkup } from 'typegram/markup';
 import { WordsService } from '../services/words.service';
 
 @Update()
 export class WordsUpdate {
   constructor(private wordsService: WordsService) {}
 
+  @Help()
+  enter(@Ctx() context: Context): void {
+    context.reply('What do you want to do?', {
+      reply_markup: {
+        inline_keyboard: [[{ text: 'get all words', callback_data: 'words' }]],
+      } as InlineKeyboardMarkup,
+    });
+  }
+
+  @Action('words')
   @Command('words')
   getWords(): Observable<string> {
     return this.wordsService
