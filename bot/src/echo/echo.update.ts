@@ -1,37 +1,12 @@
-import { UseFilters, UseGuards, UseInterceptors } from '@nestjs/common';
-import {
-  InjectBot,
-  On,
-  Message,
-  Start,
-  Update,
-  Command,
-} from 'nestjs-telegraf';
-import { Telegraf } from 'telegraf';
-import { EchoService } from './echo.service';
-import { GreeterBotName } from '../app.constants';
-import { Context } from '../interfaces/context.interface';
+import { UseGuards, UseInterceptors } from '@nestjs/common';
+import { On, Message, Update, Command } from 'nestjs-telegraf';
 import { ReverseTextPipe } from '../common/pipes/reverse-text.pipe';
 import { ResponseTimeInterceptor } from '../common/interceptors/response-time.interceptor';
 import { AdminGuard } from '../common/guards/admin.guard';
-import { TelegrafExceptionFilter } from '../common/filters/telegraf-exception.filter';
 
 @Update()
 @UseInterceptors(ResponseTimeInterceptor)
-@UseFilters(TelegrafExceptionFilter)
 export class EchoUpdate {
-  constructor(
-    @InjectBot(GreeterBotName)
-    private readonly bot: Telegraf<Context>,
-    private readonly echoService: EchoService,
-  ) {}
-
-  @Start()
-  async onStart(): Promise<string> {
-    const me = await this.bot.telegram.getMe();
-    return `Hey, I'm ${me.first_name}`;
-  }
-
   @Command('admin')
   @UseGuards(AdminGuard)
   onAdminCommand(): string {
@@ -43,6 +18,6 @@ export class EchoUpdate {
   onMessage(
     @Message('text', new ReverseTextPipe()) reversedText: string,
   ): string {
-    return this.echoService.echo(reversedText);
+    return `Echo: ${reversedText}`;
   }
 }
