@@ -1,3 +1,1 @@
-export const HELLO_SCENE_ID = 'HELLO_SCENE_ID';
-
-export const GreeterBotName = 'greeter';
+export const WORD_FLOW_BOT_NAME = 'WORD_FLOW';

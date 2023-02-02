@@ -1,7 +1,10 @@
 import { UseFilters } from '@nestjs/common';
-import { Action, Command, Message, Update } from 'nestjs-telegraf';
+import { Action, Command, Ctx, Update } from 'nestjs-telegraf';
 import { map, Observable } from 'rxjs';
+import { Scenes } from 'telegraf';
 import { TelegrafExceptionFilter } from '../../common/filters/telegraf-exception.filter';
+import { ADD_WORD_SCENE_ID } from '../scenes/add-word/add-word.constants';
+import { AddWordSceneData } from '../scenes/add-word/add-word.data';
 import { WordsService } from '../services/words.service';
 
 @Update()
@@ -21,9 +24,11 @@ export class WordsUpdate {
       );
   }
 
+  @Action('addWord')
   @Command('addWord')
-  addWord(@Message('text') text: string): Observable<void> {
-    const parts = text.split(' ');
-    return this.wordsService.addWord({ name: parts[1], meaning: parts[2] });
+  async addWord(
+    @Ctx() ctx: Scenes.SceneContext<AddWordSceneData>,
+  ): Promise<void> {
+    await ctx.scene.enter(ADD_WORD_SCENE_ID);
   }
 }

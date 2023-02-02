@@ -1,0 +1,1 @@
+export const ADD_WORD_SCENE_ID = 'ADD_WORD_SCENE_ID';
