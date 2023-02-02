@@ -2,7 +2,6 @@
 Word Flow is a tool to learn new words on daily basis.
 
 #### TODOs
-* use buttons instead of commands
 * .csv export from cambridge dictionary
 * configure .env variables
 * mount volume local to docker container so it 
