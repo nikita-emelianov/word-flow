@@ -2,10 +2,24 @@
 Word Flow is a tool to learn new words on daily basis.
 
 #### TODOs
-* .csv export from cambridge dictionary
+tech debts:
+
 * configure .env variables
 * mount volume local to docker container so it 
   would be easy to build and test changes of the fly
+
+features:
+
+* learning flow :
+  * two main learning curves - in order to learn the word you need to get it correct from the meaning to the name 5 
+    times and 5 times from the name to the meaning. Max times that word is shown in one day - 5 times. 
+  * all constants are hardcoded for now in the DB special table
+  * 'start to learn' button
+  * show user random word or meaning and ask to write the meaning or the word itself
+  * after input show user the correct answer behind the word and show two buttons - correct and wrong
+  * if correct - put +1 to the learning flow to this word
+  * if wrong - put -1 to the learning flow to this word
+* .csv export from cambridge dictionary
 
 ## HOWTO start
 1. Set up your bot with @BotFather on Telegram
