@@ -4,9 +4,10 @@ Word Flow is a tool to learn new words on daily basis.
 #### TODOs
 tech debts:
 
+* build container through github cloud, setup auto pull and auto run on instance. Instance has low resources to build 
+  container itself
 * configure .env variables
-* mount volume local to docker container so it 
-  would be easy to build and test changes of the fly
+* mount volume local to docker container so it would be easy to build and test changes of the fly 
 
 features:
 
