@@ -20,7 +20,7 @@ services:
 
   backend:
     build: ./backend
-    image: backend:1.0.0
+    image: nikitaemelian/word-flow:backend-1.0.0
     container_name: backend
     working_dir: /usr/src/backend
     restart: always
@@ -38,7 +38,7 @@ services:
 
   bot:
     build: ./bot
-    image: bot:1.0.0
+    image: nikitaemelian/word-flow:bot-1.0.0
     container_name: bot
     working_dir: /usr/src/bot
     restart: always

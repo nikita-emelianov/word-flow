@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm ci
 
 # Bundle app source
-COPY .. .
+COPY . .
 
 # Creates a "dist" folder with the production build
 RUN npm run build
