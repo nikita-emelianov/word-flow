@@ -22,6 +22,15 @@ features:
   * if wrong - put -1 to the learning flow to this word
 * .csv export from cambridge dictionary
 
+## Fast start
+```bash
+# pull and run all services
+docker compose up -d --no-build
+
+# or to build and run all services
+docker compose up -d
+```
+
 ## HOWTO start
 1. Set up your bot with @BotFather on Telegram
 2. Install Docker
