@@ -23,26 +23,24 @@ features:
 * .csv export from cambridge dictionary
 
 ## Fast start
+1. Set up your bot with @BotFather on Telegram
+2. Install Docker
+3. Create .env file with environment variables from [.env.defaults](.env.defaults)
+4. Run with
 ```bash
 # pull and run all services
 docker compose up -d --no-build
 
-# or to build and run all services
-docker compose up -d
-```
-
-## HOWTO start
-1. Set up your bot with @BotFather on Telegram
-2. Install Docker
-3. Create .env file with environment variables from [.env.defaults](bot/.env.defaults) for the bot
-4. Run
-```bash
-# build and run all services
-# add --build for rebuild 
-docker compose up -d
+# to build locally and run all services
+docker compose up -d --build
 
 # or to run specific service 
 docker compose up -d [SERVICE...]
+```
+
+to change any of env variables you need to stop and remove existing containers first
+```bash
+docker compose down
 ```
 
 ## Without docker compose
@@ -78,7 +76,9 @@ docker run -p 80:3000 word-flow
 ```
 3. Open http://localhost
 
-## Deployment
+## CI/CD
+This section is admin-only or if you want to configure your own CI/CD
+- Setup secrets for the worflow on [main.yml](.github/workflows/main.yml). See [link](https://docs.github.com/en/actions/security-guides/encrypted-secrets) for more info.
 - Install docker on the server.
 - Use script from scripts/deploy.sh to run deployment.
 - open ports to the internet: 
