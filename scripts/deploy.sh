@@ -1,5 +1,5 @@
-# Use this script to run deployment.
 #!/bin/bash
+# Use this script to run deployment.
 
 # clean up
 rm -rf deploy
@@ -19,5 +19,11 @@ fi
 # copy environment file .env-bot to bot folder
 cp .env-bot deploy/.env
 
-# run
+# pull latest images
+docker compose -f deploy/docker-compose.yml pull
+
+# run docker compose
 docker compose -f deploy/docker-compose.yml up -d
+
+# clean up
+docker system prune -a --volumes -f
