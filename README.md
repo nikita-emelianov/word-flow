@@ -4,8 +4,9 @@ Word Flow is a tool to learn new words on daily basis.
 #### TODOs
 tech:
 
-* run it in lightsail
-* mount volume local to docker container so it would be easy to build and test changes of the fly 
+* auto redeploy webhook (+auth)
+* make backend private by adding auth flow
+* mount volume local to docker container so it would be easy to build and test changes on the fly 
 
 features:
 
