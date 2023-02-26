@@ -6,7 +6,7 @@ tech:
 
 * auto redeploy webhook (+auth)
 * make backend private by adding auth flow
-* mount volume local to docker container so it would be easy to build and test changes on the fly 
+* mount volume local to docker container -> it makes it easy to build and test changes on the fly 
 
 features:
 
@@ -77,13 +77,26 @@ docker run -p 80:3000 word-flow
 
 ## CI/CD
 This section is admin-only or if you want to configure your own CI/CD
-- Setup secrets for the worflow on [main.yml](.github/workflows/main.yml). See [link](https://docs.github.com/en/actions/security-guides/encrypted-secrets) for more info.
+- Create Docker Hub repo.
+- Setup encrypted secrets for the workflow on [main.yml](.github/workflows/main.yml).
+  See what is encrypted secrets [here](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
+  See how to define GitHub Actions workflow with Docker Hub [here](https://docs.docker.com/build/ci/github-actions/)
 - Install docker on the server.
-- Use script from scripts/deploy.sh to run deployment.
-- open ports to the internet: 
-  - 80 port for backend access.
-  - 8080 port for phpmyadmin access.
+- Install [webhook tool](https://github.com/adnanh/webhook) on the server.
+- Copy deploy [script](deploy/deploy.sh) and [hooks config](deploy/hooks.yml) to your server. 
+  Don't forget to adjust permissions to run the script and the webhook.
+- Copy .env file with environment variables from [.env.defaults](.env.defaults).
+  Adjust variables according to your needs.
+- Open ports to the internet: 
+  - 80 port for public backend access.
+  - 9000 port for public webhook access.
+  - 8080 port for phpmyadmin access (should be restricted to your IP address);
   - 3306 port for direct mysql engine access if you want to manage mysql from external.
+- Start the Webhook by running 
+```bash
+webhook -hooks hooks.yml -verbose
+```
+- to be continued...
 
 ## Support & License
 Word Flow is an [MIT licensed](LICENSE) open source project.

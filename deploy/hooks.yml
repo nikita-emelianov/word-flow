@@ -1,0 +1,4 @@
+- id: redeploy
+  execute-command: ./deploy.sh
+  command-working-directory: ./
+  response-message: Redeploying started

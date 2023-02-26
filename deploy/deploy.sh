@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Use this script to run deployment.
 
 # clean up
