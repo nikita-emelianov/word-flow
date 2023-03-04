@@ -7,6 +7,11 @@ rm -rf deploy
 # download docker compose file
 wget -P deploy https://raw.githubusercontent.com/nikita-emelianov/word-flow/main/docker-compose.yml
 
+# run webhooks in background
+if ! pgrep webhook > /dev/null; then
+  nohup webhook -hooks=hooks.yml -verbose -hotreload &
+fi
+
 # check environment file .env-bot existence
 if ! test -f ".env-bot"; then
   printf '\033[31m'

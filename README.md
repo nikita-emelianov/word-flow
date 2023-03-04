@@ -84,18 +84,14 @@ This section is admin-only or if you want to configure your own CI/CD
 - Install docker on the server.
 - Install [webhook tool](https://github.com/adnanh/webhook) on the server.
 - Copy deploy [script](deploy/deploy.sh) and [hooks config](deploy/hooks.yml) to your server. 
-  Don't forget to adjust permissions to run the script and the webhook.
+  Don't forget to adjust permissions to run the script and the webhooks.
 - Copy .env file with environment variables from [.env.defaults](.env.defaults).
   Adjust variables according to your needs.
 - Open ports to the internet: 
   - 80 port for public backend access.
-  - 9000 port for public webhook access.
+  - 9000 port for public webhooks access.
   - 8080 port for phpmyadmin access (should be restricted to your IP address);
   - 3306 port for direct mysql engine access if you want to manage mysql from external.
-- Start the Webhook by running 
-```bash
-webhook -hooks hooks.yml -verbose
-```
 - to be continued...
 
 ## Support & License
