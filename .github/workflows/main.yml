@@ -6,34 +6,46 @@ on:
       - "main"
 
 jobs:
-  build:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      -
+#        name: Checkout
+#        uses: actions/checkout@v3
+#      -
+#        name: Login to Docker Hub
+#        uses: docker/login-action@v2
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
+#      -
+#        name: Set up Docker Buildx
+#        uses: docker/setup-buildx-action@v2
+#      -
+#        name: Build and push backend
+#        uses: docker/build-push-action@v4
+#        with:
+#          context: ./backend
+#          file: ./backend/Dockerfile
+#          push: true
+#          tags: ${{ secrets.DOCKERHUB_USERNAME }}/word-flow:backend-latest
+#      -
+#        name: Build and push bot
+#        uses: docker/build-push-action@v4
+#        with:
+#          context: ./bot
+#          file: ./bot/Dockerfile
+#          push: true
+#          tags: ${{ secrets.DOCKERHUB_USERNAME }}/word-flow:bot-latest
+
+  redeploy:
+    name: Redeploy webhook call
     runs-on: ubuntu-latest
+#    needs: [ build ]
     steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v3
-      -
-        name: Login to Docker Hub
-        uses: docker/login-action@v2
+      - name: Deploy docker container webhook
+        uses: joelwmale/webhook-action@master
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      -
-        name: Build and push backend
-        uses: docker/build-push-action@v4
-        with:
-          context: ./backend
-          file: ./backend/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/word-flow:backend-latest
-      -
-        name: Build and push bot
-        uses: docker/build-push-action@v4
-        with:
-          context: ./bot
-          file: ./bot/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/word-flow:bot-latest
+          url: ${{ secrets.DEPLOY_WEBHOOK_URL }}
+          headers: '{"X-Hub-Signature": "a7513e64c088fb7ca89d07c2fd45abf00013c3be"}'
+          body: '{"event": "deployment", "repository": "joelwmale/webhook-action"}'
