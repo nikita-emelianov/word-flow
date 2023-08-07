@@ -7,14 +7,11 @@ import { WordsModule } from './words/words.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      // to run locally
-      // host: 'localhost',
-      // to run with docker
-      host: 'host.docker.internal',
       port: 3306,
-      username: 'root',
-      password: process.env.MYSQL_ROOT_PASSWORD,
-      database: process.env.MYSQL_DATABASE,
+      host: process.env.DATABASE_HOST,
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
       entities: [Word],
       synchronize: true,
     }),

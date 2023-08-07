@@ -4,9 +4,12 @@ Word Flow is a tool to learn new words on daily basis.
 #### TODOs
 tech:
 
-* auto redeploy webhook (+auth)
 * make backend private by adding auth flow
 * mount volume local to docker container -> it makes it easy to build and test changes on the fly 
+
+docs:
+
+* improve CI/CD section markup
 
 features:
 
@@ -64,35 +67,54 @@ docker exec -it mysql bash
 mysql --user=root --password=rootpass
 ```
 ### Backend
-1. Build image
+1. Set up .env variables in '.env' (see [.env.defaults](backend/.env.defaults))
+2. Build image
 ```bash
 # docker run
 docker build -t word-flow ./backend
 ```
-2. Run container
+3. Run container
 ```bash
-docker run -p 80:3000 word-flow
+docker run -p 80:3000 -d word-flow
 ```
-3. Open http://localhost
+4. Open http://localhost
+
+### Bot
+1. Set up .env variables in '.env' (see [.env.defaults](bot/.env.defaults))
+2. Build image
+```bash
+# docker run
+docker build -t bot ./bot
+```
+3. Run container
+```bash
+docker run -d bot
+```
+4. Open telegram bot
 
 ## CI/CD
 This section is admin-only or if you want to configure your own CI/CD
+This example is checked on Amazon Lightsail Debian 11.4.
 - Create Docker Hub repo.
-- Setup encrypted secrets for the workflow on [main.yml](.github/workflows/main.yml).
+- GitHub. Setup all encrypted secrets required for the Actions workflow from in your repo [main.yml](.github/workflows/main.yml).
   See what is encrypted secrets [here](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
   See how to define GitHub Actions workflow with Docker Hub [here](https://docs.docker.com/build/ci/github-actions/)
-- Install docker on the server.
-- Install [webhook tool](https://github.com/adnanh/webhook) on the server.
-- Copy deploy [script](deploy/deploy.sh) and [hooks config](deploy/hooks.yml) to your server. 
-  Don't forget to adjust permissions to run the script and the webhooks.
-- Copy .env file with environment variables from [.env.defaults](.env.defaults).
+- Install docker to the server using [this](https://docs.docker.com/engine/install/debian/#install-using-the-repository).
+- Install [webhook tool](https://github.com/adnanh/webhook) to the server.
+- Copy deploy [script](deploy/deploy.sh) and [hooks config](deploy/hooks.yml) to your server. tip: use wget -O filename https://url-to-raw-file
+  Don't forget to adjust permissions for the files to be able to run the script and the webhook (chmod 777 filename)
+- add your secret for webhook as environment global variable that you used on github in the following file:
+  /etc/environment – This file is used to set up system-wide environment variables
+  Set 'DEPLOY_WEBHOOK_SECRET=yourwebhooksecret'. For the changes to take effect, use the command 'source /etc/environment'
+- Copy .env file with environment variables from [.env.defaults](.env.defaults)
   Adjust variables according to your needs.
 - Open ports to the internet: 
   - 80 port for public backend access.
   - 9000 port for public webhooks access.
   - 8080 port for phpmyadmin access (should be restricted to your IP address);
   - 3306 port for direct mysql engine access if you want to manage mysql from external.
-- to be continued...
+- run 'sh deploy.sh' for the first time to start the webhook service and docker-compose file. 
+  Next time it will be run automatically on push to main.
 
 ## Support & License
 Word Flow is an [MIT licensed](LICENSE) open source project.
