@@ -37,3 +37,14 @@ jobs:
           file: ./bot/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/word-flow:bot-latest
+
+  hook:
+    name: Invoke deployment hook
+    runs-on: ubuntu-latest
+    needs: [ build ]
+    steps:
+      - name: Deploy docker container webhook
+        uses: distributhor/workflow-webhook@v3
+        env:
+          webhook_url: ${{ secrets.DEPLOY_WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.DEPLOY_WEBHOOK_SECRET }}

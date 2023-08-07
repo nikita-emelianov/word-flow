@@ -9,20 +9,20 @@ wget -P deploy https://raw.githubusercontent.com/nikita-emelianov/word-flow/main
 
 # run webhooks in background
 if ! pgrep webhook > /dev/null; then
-  nohup webhook -hooks=hooks.yml -verbose -hotreload &
+  nohup webhook -hooks=hooks.yml -template -verbose -hotreload &
 fi
 
-# check environment file .env-bot existence
-if ! test -f ".env-bot"; then
+# check environment file .env existence
+if ! test -f ".env"; then
   printf '\033[31m'
-  echo Error: you have to provide .env-bot file with environment variables
+  echo Error: you have to provide .env file with environment variables
   echo See https://github.com/nikita-emelianov/word-flow/blob/main/.env.defaults for more info
   printf '\033[0m'
   exit 1
 fi
 
-# copy environment file .env-bot to bot folder
-cp .env-bot deploy/.env
+# copy environment file .env to bot folder
+cp .env deploy/.env
 
 # pull latest images
 docker compose -f deploy/docker-compose.yml pull

@@ -1,4 +1,18 @@
-- id: redeploy
+- id: deploy
   execute-command: ./deploy.sh
   command-working-directory: ./
-  response-message: Redeploying started
+  response-message: Deploying started
+  trigger-rule:
+    and:
+      - match:
+          type: payload-hash-sha1
+          secret: "{{ getenv "DEPLOY_WEBHOOK_SECRET" | js }}"
+          parameter:
+            source: header
+            name: X-Hub-Signature
+      - match:
+          type: value
+          value: refs/heads/main
+          parameter:
+            source: payload
+            name: ref
