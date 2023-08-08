@@ -45,8 +45,8 @@ to change any of env variables you need to stop and remove existing containers f
 docker compose down
 ```
 
-## Without docker compose
-### Docker mysql and phpmyadmin
+## Docker without docker compose
+### mysql and phpmyadmin
 1. Install docker
 2. Pull latest mysql and phpmyadmin images
 ```bash
@@ -66,8 +66,8 @@ docker ps
 docker exec -it mysql bash
 mysql --user=root --password=rootpass
 ```
-### Backend
-1. Set up .env variables in '.env' (see [.env.defaults](backend/.env.defaults))
+### backend
+1. Set up .env variables in '.env'. See [.env.defaults](backend/.env.defaults)
 2. Build image
 ```bash
 # docker run
@@ -79,8 +79,8 @@ docker run -p 80:3000 -d word-flow
 ```
 4. Open http://localhost
 
-### Bot
-1. Set up .env variables in '.env' (see [.env.defaults](bot/.env.defaults))
+### bot
+1. Set up .env variables in '.env'. See [.env.defaults](bot/.env.defaults)
 2. Build image
 ```bash
 # docker run

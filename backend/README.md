@@ -1,15 +1,16 @@
 # Word Flow backend
 
-## HOWTO start
+## HOWTO start with Docker
 Use [Word Flow manual](../README.md) for a fast start
 
-## Local development
+## Local development without docker
 1. Install packages
 ```bash
 npm install
 ```
-2. Change `host` in [app.module.ts](src/app.module.ts) to `localhost`
-3. Run with
+2. Set up .env variables in '.env'. See [.env.defaults](.env.defaults)
+3. To run mysql and phpmyadmin in Docker see [Word Flow manual](../README.md)
+4. Run with
 ```bash
 # development
 npm run start
@@ -20,7 +21,7 @@ npm run start:dev
 # production mode
 npm run start:prod
 ```
-4. Open http://localhost:3000
+5. Open http://localhost:3000
 
 ## Test
 ```bash
